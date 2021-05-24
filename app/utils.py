@@ -1,4 +1,3 @@
-
 def extractComponent(domSubtree, selector, attribute=None):
     try:
         if attribute:

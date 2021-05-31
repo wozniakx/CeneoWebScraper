@@ -29,6 +29,14 @@ class Product:
         with open(f"app/products/{self.productId}.json", "w", encoding="UTF-8") as f:
             json.dump(self.toDict(), f, indent=4, ensure_ascii=False)
 
+    def importProduct(self):
+        with open(f"app/products/{self.productId}.json", "w", encoding="UTF-8") as f:
+            product = json.load(f)
+            self.productId = product['productId']
+            opinions = product['opinions']
+            for opinion in opinions:
+                self.opinions.append(Opinion(**opinion))
+
     def toDict(self):
         return {
             "productId": self.productId,
